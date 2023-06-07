@@ -13,9 +13,8 @@ jobs:
       uses: docker/build-push-action@v4.0.0
       with:
         context: ./app
-        image: sergklm1/flask-sample
         push: true
         registry: docker.io
-        tags: latest
+        tags: sergklm1/flask-sample:latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
