@@ -10,11 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build and push Docker images
-      uses: docker/build-push-action@v4.0.0
-      with:
-        context: ./app
-        push: true
-        # registry: docker.io
-        tags: sergklm1/flask-sample:latest
-        username: sergklm1
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker build -t sergklm1/flask-sample:latest ./app
+        docker login -u sergklm1 -p ${{ secrets.DOCKER_PASSWORD }}
+        docker push sergklm1/flask-sample:latest
