@@ -15,6 +15,7 @@ jobs:
         context: ./app
         image: sergklm1/flask-sample
         push: true
+        registry: docker.io
         tags: latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
