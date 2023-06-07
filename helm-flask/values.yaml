@@ -2,15 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-livenessProbePath: "/isalive"  # new: line added
-readinessProbePath: "/isready" # new: line added
+# livenessProbePath: "/isalive"  # new: line added
+# readinessProbePath: "/isready" # new: line added
 containerPort: 8080            # new: line added
-
-# Expose the route host (URL) and targetPort
-route:
-  host: flask-lorem-ipsum.apps-crc.testing
-  port:
-    targetPort: "http"
 
 replicaCount: 1
 
@@ -26,7 +20,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
