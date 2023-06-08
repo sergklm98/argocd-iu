@@ -1,0 +1,55 @@
+# ArgoCD config
+# https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+argo-cd:
+  enabled: true
+
+  # configs:
+  #   params:
+  #     server.insecure: false
+  #     server.disable.auth: false
+
+  # controller:
+  #   replicas: 1
+  #   pdb:
+  #     enabled: false
+
+  # dex:
+  #   enabled: true
+  #   pdb:
+  #     enabled: false
+
+  # redis:
+  #   enabled: true
+  #   pdb:
+  #     enabled: false
+  # redis-ha:
+  #   enabled: false
+
+  # server:
+  #   replicas: 1
+  #   autoscaling:
+  #     enabled: false
+  #   pdb:
+  #     enabled: false
+
+  # repoServer:
+  #   replicas: 1
+  #   autoscaling:
+  #     enabled: false
+  #   pdb:
+  #     enabled: false
+
+  # applicationSet:
+  #   enabled: true
+  #   replicaCount: 1
+  #   pdb:
+  #     enabled: false
+
+  # notifications:
+  #   enabled: true
+  #   pdb:
+  #     enabled: false
+
+image-updater:
+  enabled: true
+

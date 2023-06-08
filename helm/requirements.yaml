@@ -1,0 +1,13 @@
+dependencies:
+  - name: argo-cd
+    version: 5.36.0
+    repository: https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    condition: argo-cd.enabled
+  - name: argocd-image-updater
+    version: 1.0.0
+    repository: file://./charts/argocd-image-updater
+    condition: image-updater.enabled
+  - name: flask-sample
+    version: 1.0.0
+    repository: file://./charts/flask-sample
+    # condition: image-updater.enabled

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: argocd-image-updater
+description: ArgoCD image updater plugin
+version: 1.0.0
+sources:
+  - https://github.com/argoproj-labs/argocd-image-updater
