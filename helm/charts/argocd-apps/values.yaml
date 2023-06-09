@@ -2,31 +2,31 @@
 # @default -- `[]` (See [values.yaml])
 ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/
 applications:
-  - name: argo-cd
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    project: default
-    sources:
-      - chart: argo-cd
-        repoURL: "https://argoproj.github.io/argo-helm"
-        targetRevision: 5.36.0
-        helm:
-          releaseName: argocd
-          ValuesFiles:
-            - $values/helm/charts/argo-cd/values.yaml
-      - repoURL: https://github.com/sergklm98/argocd-iu
-        ref: values
-        targetRevision: develop-charts
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: argocd
-    # syncPolicy:
-    #   automated:
-    #     prune: false
-    #     selfHeal: false
+  # - name: argo-cd
+  #   namespace: argocd
+  #   additionalLabels: {}
+  #   additionalAnnotations: {}
+  #   finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
+  #   project: default
+  #   sources:
+  #     - chart: argo-cd
+  #       repoURL: "https://argoproj.github.io/argo-helm"
+  #       targetRevision: 5.36.0
+  #       helm:
+  #         releaseName: argocd
+  #         ValuesFiles:
+  #           - '$values/helm/charts/argo-cd/values.yaml'
+  #     - repoURL: https://github.com/sergklm98/argocd-iu
+  #       ref: values
+  #       targetRevision: develop-charts
+  #   destination:
+  #     server: https://kubernetes.default.svc
+  #     namespace: argocd
+  #   syncPolicy:
+  #     automated:
+  #       prune: false
+  #       selfHeal: false
 
   - name: argocd-image-updater
     namespace: argocd
@@ -42,7 +42,7 @@ applications:
         helm:
           releaseName: argocd-image-updater
           ValuesFiles:
-            - $values/helm/charts/argocd-image-updater/values.yaml
+            - '$values/helm/charts/argocd-image-updater/values.yaml'
       - repoURL: https://github.com/sergklm98/argocd-iu
         ref: values
         targetRevision: develop-charts
