@@ -19,7 +19,7 @@ applications:
   #           - '$values/helm/charts/argo-cd/values.yaml'
   #     - repoURL: https://github.com/sergklm98/argocd-iu
   #       ref: values
-  #       targetRevision: develop-charts
+  #       targetRevision: HEAD
   #   destination:
   #     server: https://kubernetes.default.svc
   #     namespace: argocd
@@ -45,7 +45,7 @@ applications:
             - '$values/helm/charts/argocd-image-updater/values.yaml'
       - repoURL: https://github.com/sergklm98/argocd-iu
         ref: values
-        targetRevision: develop-charts
+        targetRevision: HEAD
     destination:
       server: https://kubernetes.default.svc
       namespace: argocd
@@ -68,7 +68,7 @@ applications:
     source:
       path: helm/charts/flask-sample
       repoURL: https://github.com/sergklm98/argocd-iu
-      targetRevision: develop-charts
+      targetRevision: HEAD
       helm:
         releaseName: flask-sample
         parameters:
