@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/**'
       - 'app/**'
+  workflow_dispatch: {}
   
 
 jobs:
