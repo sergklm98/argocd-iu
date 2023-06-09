@@ -1,9 +1,6 @@
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
-helm plugin install https://github.com/databus23/helm-diff
-source <(helm completion bash)
-
 minikube start
 
 minikube dashboard &
