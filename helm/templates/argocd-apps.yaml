@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    app.kubernetes.io/name: argocd-apps
+    app.kubernetes.io/part-of: argocd-apps
+  name: argocd-apps
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: argocd-apps
+      repoURL: "https://argoproj.github.io/argo-helm"
+      targetRevision: 1.2.0
+      helm:
+        releaseName: argocd-apps
+        ValuesFiles:
+          - $values/helm/charts/argocd-apps/values.yaml
+    - repoURL: https://github.com/sergklm98/argocd-iu
+      ref: values
+      targetRevision: develop-charts
+  syncPolicy:
+    automated: {}
+  #     prune: true

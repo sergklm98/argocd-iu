@@ -14,9 +14,15 @@ minikube dashboard &
 oc create ns argocd
 kubectl config set-context --current --namespace=argocd
 
-oc apply -f infra/ArgoCD.yaml
-oc apply -f infra/ArgoCDimageUpdater.yaml
-oc apply -f infra/App.yaml
+helm repo add argo https://argoproj.github.io/argo-helm
+
+helm upgrade -i -n argocd argocd argo/argo-cd --version 5.36.0 -f helm/charts/argo-cd/values.yaml
+# helm upgrade -i -n argocd argocd-image-updater argo/argocd-image-updater -f helm/charts/argocd-image-updater/values.yaml
+helm upgrade -i -n argocd argocd-apps argo/argocd-apps --version 1.2.0 -f helm/charts/argocd-apps/values.yaml
+
+# oc apply -f infra/ArgoCD.yaml
+# oc apply -f infra/ArgoCDimageUpdater.yaml
+# oc apply -f infra/App.yaml
 
 # oc get pod -w
 

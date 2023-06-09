@@ -2,7 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd-image-updater.argoproj.io/image-list: docker.io/sergklm1/flask-sample:latest
+    argocd-image-updater.argoproj.io/image-list: flask=docker.io/sergklm1/flask-sample:latest
+    argocd-image-updater.argoproj.io/flask.update-strategy: digest
+    argocd-image-updater.argoproj.io/flask.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/flask.helm.image-tag: image.tag
   name: flask-sample
   namespace: argocd
 spec:
@@ -11,7 +14,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: helm-flask
+    path: helm/charts/flask-sample
     repoURL: https://github.com/sergklm98/argocd-iu
     targetRevision: HEAD
     helm:

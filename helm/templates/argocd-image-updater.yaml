@@ -11,10 +11,17 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: default
-  source:
-    path: helm/charts/argocd-image-updater
-    repoURL: https://github.com/sergklm98/argocd-iu
-    targetRevision: HEAD
+  sources:
+    - chart: argocd-image-updater
+      repoURL: "https://argoproj.github.io/argo-helm"
+      targetRevision: 0.9.1
+      helm:
+        releaseName: argocd-image-updater
+        ValuesFiles:
+          - $values/helm/charts/argocd-image-updater/values.yaml
+    - repoURL: https://github.com/sergklm98/argocd-iu
+      ref: values
+      targetRevision: develop-charts
   syncPolicy:
     automated: {}
   #     prune: true

@@ -11,10 +11,17 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: default
-  source:
-    path: charts/argo-cd
-    repoURL: https://github.com/argoproj/argo-helm
-    targetRevision: HEAD
+  sources:
+    - chart: argo-cd
+      repoURL: "https://argoproj.github.io/argo-helm"
+      targetRevision: 5.36.0
+      helm:
+        releaseName: argocd
+        ValuesFiles:
+          - $values/helm/charts/argo-cd/values.yaml
+    - repoURL: https://github.com/sergklm98/argocd-iu
+      ref: values
+      targetRevision: develop-charts
   syncPolicy:
     automated: {}
   #     prune: true
