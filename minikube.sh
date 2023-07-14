@@ -22,4 +22,12 @@ echo admin:$(oc get secret/argocd-initial-admin-secret -o go-template --template
 kubectl port-forward -n default service/flask-sample 8080:80 >>port-forward.log 2>&1 &
 curl localhost:8080
 
+curl -L https://istio.io/downloadIstio | sh -
+export PATH="$PATH:$PWD/istio-1.18.0/bin"
+istioctl install --set profile=demo -y
+kubectl label namespace default istio-injection=enabled
+
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+
 # minikube delete
